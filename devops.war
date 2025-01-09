@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Web Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome to Our Simple Web Page</h1>
+</header>
+
+<div class="container">
+    <h2>Hello, World!</h2>
+    <p>This is a simple webpage that interacts with a Java Servlet.</p>
+
+    <button onclick="fetchMessage()">Click Me!</button>
+
+    <p id="responseMessage"></p>
+</div>
+
+<footer>
+    <p>&copy; 2025 Simple Web Page</p>
+</footer>
+
+<script>
+    function fetchMessage() {
+        // Make an AJAX request to the servlet
+        fetch('/my-web-app/hello')
+            .then(response => response.text())
+            .then(data => {
+                // Update the page with the response from the servlet
+                document.getElementById('responseMessage').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+</script>
+
+</body>
+</html>
